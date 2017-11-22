@@ -1,0 +1,45 @@
+name: cumulonimbus
+version: 1.6.7
+summary: Cumulonimbus - A simple, beautiful podcast app.
+description: |
+  Cumulonimbus is very much a work in progress. Please expect bugs.
+grade: stable
+confinement: strict
+
+parts:
+  cumulonimbus:
+    plugin: dump
+    source: https://github.com/z-------------/cumulonimbus/releases/download/v1.6.7/Cumulonimbus_1.6.7_amd64.deb
+    after:
+      - desktop-gtk2
+    stage-packages:
+      - libasound2
+      - libc++1
+      - libgconf2-4
+      - libnotify4
+      - libnspr4
+      - libnss3
+      - libpulse0
+      - libxss1
+      - libxtst6
+
+apps:
+  cumulonimbus:
+    command: bin/desktop-launch $SNAP/opt/Cumulonimbus/cumulonimbus
+    environment:
+      TMPDIR: $XDG_RUNTIME_DIR
+    plugs:
+      - bluez
+      - browser-support
+      - camera
+      - gsettings
+      - home
+      - mount-observe
+      - network
+      - network-observe
+      - process-control
+      - pulseaudio
+      - screen-inhibit-control
+      - system-observe
+      - unity7
+      - x11

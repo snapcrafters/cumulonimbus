@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Cumulonimbus
+Comment=A simple, beautiful podcast app.
+Exec=cumulonimbus
+Terminal=false
+Type=Application
+Icon=${SNAP}/meta/gui/cumulonimbus.png
+Categories=Audio;

@@ -60,13 +60,13 @@ upstream so Cumulonimbus can authoritatively publish future releases.
   - [ ] Ask the Snap Advocacy team to celebrate the snap - [link]()
 
 If you have any questions, [post in the Snapcraft forum](https://forum.snapcraft.io).
-
+<!--
 ## The Snapcrafters
 
 | [![Your Name](http://gravatar.com/avatar/bc0bced65e963eb5c3a16cab8b004431/?s=128)](https://github.com/yourname/) |
 | :---: |
 | [Your Name](https://github.com/yourname/) |
-
+-->
 <!-- Uncomment and modify this when you have upstream contacts
 ## Upstream
 

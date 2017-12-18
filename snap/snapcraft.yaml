@@ -14,7 +14,6 @@ parts:
       - desktop-gtk2
     stage-packages:
       - libasound2
-      - libc++1
       - libgconf2-4
       - libnotify4
       - libnspr4
@@ -31,17 +30,12 @@ apps:
     plugs:
       - bluez
       - browser-support
-      - camera
-      - desktop
-      - desktop-legacy
       - gsettings
       - home
       - mount-observe
       - network
-      - network-observe
-      - process-control
+      - opengl
       - pulseaudio
-      - screen-inhibit-control
-      - system-observe
       - unity7
       - wayland
+      - x11

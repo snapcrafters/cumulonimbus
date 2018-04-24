@@ -9,7 +9,7 @@ confinement: strict
 parts:
   cumulonimbus:
     plugin: dump
-    source: https://github.com/z-------------/cumulonimbus/releases/download/v$SNAPCRAFT_PROJECT_VERSION/Cumulonimbus_$SNAPCRAFT_PROJECT_VERSION_amd64.deb
+    source: https://github.com/z-------------/cumulonimbus/releases/download/v$SNAPCRAFT_PROJECT_VERSION/CPod_$SNAPCRAFT_PROJECT_VERSION/_amd64.deb
     after:
       - desktop-gtk2
     # Clear the execstack

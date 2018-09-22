@@ -1,16 +1,16 @@
 name: cumulonimbus
-version: latest
-version-script: cat $SNAPCRAFT_STAGE/version
 summary: Cumulonimbus - A simple, beautiful podcast app.
 description: |
   Cumulonimbus is very much a work in progress. Please expect bugs.
 grade: stable
 confinement: strict
+adopt-info: cumulonimbus
 
 parts:
   cumulonimbus:
     plugin: nil
     override-build: |
+      set -x
       snapcraftctl build
       # Get the latest releases json
       echo "Get GitHub releases..."
@@ -25,7 +25,7 @@ parts:
       dpkg -x "${SNAPCRAFT_PART_INSTALL}/${DEB}" ${SNAPCRAFT_PART_INSTALL}
       rm -f releases.json 2>/dev/null
       rm -f "${SNAPCRAFT_PART_INSTALL}/${DEB}" 2>/dev/null
-      echo $VERSION > $SNAPCRAFT_STAGE/version
+      snapcraftctl set-version "$VERSION"
     after:
       - desktop-gtk2
     build-packages:

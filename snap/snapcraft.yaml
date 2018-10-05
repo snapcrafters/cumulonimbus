@@ -5,7 +5,9 @@ description: |
 grade: stable
 confinement: strict
 adopt-info: cumulonimbus
-
+architectures:
+  - build-on: amd64
+  
 parts:
   cumulonimbus:
     plugin: nil
@@ -29,13 +31,9 @@ parts:
     after:
       - desktop-gtk2
     build-packages:
-      # Cumulonimbus debs are only available for amd64.
-      # Fail builds on other architectures
-      - on amd64:
-        - dpkg
-        - jq
-        - wget
-      - else fail
+      - dpkg
+      - jq
+      - wget
     stage-packages:
       - libasound2
       - libgconf2-4

@@ -47,7 +47,7 @@ parts:
 
 apps:
   cumulonimbus:
-    command: bin/desktop-launch $SNAP/opt/CPod/cumulonimbus
+    command: bin/desktop-launch $SNAP/opt/CPod/cpod
     environment:
       TMPDIR: $XDG_RUNTIME_DIR
     plugs:

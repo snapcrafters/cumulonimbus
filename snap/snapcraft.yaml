@@ -1,66 +1,76 @@
 name: cumulonimbus
-summary: CPod - A simple, beautiful podcast app.
+title: CPod
+summary: A simple, beautiful podcast app.
 description: |
-  CPod is very much a work in progress. Please expect bugs.
+  Simple podcast app built with Electron. Play your favorite podcasts, and discover new ones with an easy to use interface.
+
+  - Listen to our favorite podcasts
+  - Search for podcasts and subscribe directly from the app
+  - Add episodes to playlists
+  - Filter episodes by their duration and release date
+  - Export/import podcasts (.opml)
+
+  NOTE: CPod is not actively maintained. Please expect bugs.
+
+  **Authors**
+
+  This snap package is maintained by the Snapcrafters community. It is not necessarily endorsed or officially maintained by the developers of the application itself.  
+license: Apache-2.0
+website: https://github.com/z-------------/CPod
+contact: https://github.com/snapcrafters/cumulonimbus/issues
+issues: https://github.com/snapcrafters/cumulonimbus/issues
+source-code: https://github.com/snapcrafters/cumulonimbus
+icon: snap/gui/cumulonimbus.png
+adopt-info: cpod
+
+
 grade: stable
 confinement: strict
-adopt-info: cumulonimbus
 architectures:
   - build-on: amd64
-  
+base: core22
+
 parts:
-  cumulonimbus:
+  cpod:
     plugin: nil
     override-build: |
-      set -x
-      snapcraftctl build
+      set -xeu
+      craftctl default
       # Get the latest releases json
       echo "Get GitHub releases..."
       wget --quiet https://api.github.com/repos/z-------------/CPod/releases -O releases.json
       # Get the version from the tag_name and the download URL.
       VERSION=$(jq . releases.json | grep tag_name | cut -d'"' -f4 | sed s'/v//' | head -n 1)
       DEB_URL=$(grep browser_download releases.json | grep "${VERSION}" | grep deb | cut -d'"' -f4)
-      DEB=$(basename "${DEB_URL}")
       echo "Downloading ${DEB_URL}..."
-      wget --quiet "${DEB_URL}" -O "${SNAPCRAFT_PART_INSTALL}/${DEB}"
-      echo "Unpacking ${DEB}..."
-      dpkg -x "${SNAPCRAFT_PART_INSTALL}/${DEB}" ${SNAPCRAFT_PART_INSTALL}
-      rm -f releases.json 2>/dev/null
-      rm -f "${SNAPCRAFT_PART_INSTALL}/${DEB}" 2>/dev/null
-      snapcraftctl set-version "$VERSION"
-    after:
-      - desktop-gtk2
+      wget --quiet "${DEB_URL}" -O cpod.deb
+      echo "Unpacking cpod.deb..."
+      dpkg -x cpod.deb ${CRAFT_PART_INSTALL}
+      rm cpod.deb releases.json
+      sed -i 's|Icon=cpod|Icon=${SNAP}/usr/share/icons/hicolor/512x512/apps/cpod.png|' $CRAFT_PART_INSTALL/usr/share/applications/cpod.desktop
+      craftctl set version="$VERSION"
     build-packages:
       - dpkg
       - jq
       - wget
     stage-packages:
-      - libasound2
-      - libgconf2-4
-      - libgl1-mesa-glx
-      - libnotify4
       - libnspr4
       - libnss3
-      - libpulse0
       - libxss1
       - libxtst6
+      - libgconf-2-4
 
 apps:
   cumulonimbus:
-    command: bin/desktop-launch $SNAP/opt/CPod/cpod
-    environment:
-      TMPDIR: $XDG_RUNTIME_DIR
+    extensions: [gnome]
+    command: opt/CPod/cpod
+    desktop: usr/share/applications/cpod.desktop
     plugs:
       - bluez
       - browser-support
-      - desktop
-      - desktop-legacy
       - gsettings
       - home
       - mount-observe
       - network
       - opengl
-      - pulseaudio
-      - unity7
-      - wayland
-      - x11
+      - audio-playback

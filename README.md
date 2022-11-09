@@ -22,8 +22,6 @@ snap install cumulonimbus
 
 <p align="center">Published for <img src="https://raw.githubusercontent.com/anythingcodes/slack-emoji-for-techies/gh-pages/emoji/tux.png" align="top" width="24" /> with :gift_heart: by Snapcrafters</p>
 
-([Don't have snapd installed?](https://snapcraft.io/docs/core/install))
-
 ## License
 
 The license of the build files in this repository and CPod itself is Apache License, Version 2.0

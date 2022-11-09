@@ -24,4 +24,4 @@ snap install cumulonimbus
 
 ## License
 
-The license of the build files in this repository and CPod itself is Apache License, Version 2.0
+The license of the build files in this repository and CPod itself are Apache License, Version 2.0

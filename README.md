@@ -6,7 +6,7 @@
 
 <p align="center"><b>This is the snap for CPod</b>. It is a community-maintained package to easily install Cpod on Ubuntu, Fedora, Debian and other major Linux distributions. It is available in the Snap Store, Ubuntu Software, and a number of other software stores.</p>
 
-<p align="center"><i>"A simple, beautiful podcast app."</p>
+<p align="center"><i>"A simple, beautiful podcast app."</i></p>
 
 <p align="center">
 <a href="https://snapcraft.io/cumulonimbus"><img src="https://snapcraft.io/cumulonimbus/badge.svg" alt="Snap Status"></a>

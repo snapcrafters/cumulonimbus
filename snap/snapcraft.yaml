@@ -21,8 +21,7 @@ contact: https://github.com/snapcrafters/cumulonimbus/issues
 issues: https://github.com/snapcrafters/cumulonimbus/issues
 source-code: https://github.com/snapcrafters/cumulonimbus
 icon: snap/gui/cumulonimbus.png
-adopt-info: cpod
-
+version: '1.28.2'
 
 grade: stable
 confinement: strict
@@ -48,7 +47,6 @@ parts:
       dpkg -x cpod.deb ${CRAFT_PART_INSTALL}
       rm cpod.deb releases.json
       sed -i 's|Icon=cpod|Icon=${SNAP}/usr/share/icons/hicolor/512x512/apps/cpod.png|' $CRAFT_PART_INSTALL/usr/share/applications/cpod.desktop
-      craftctl set version="$VERSION"
     build-packages:
       - dpkg
       - jq

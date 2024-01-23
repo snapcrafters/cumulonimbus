@@ -10,8 +10,8 @@ description: |
   - Filter episodes by their duration and release date
   - Export/import podcasts (.opml)
 
-  NOTE: CPod is not actively maintained. Please expect bugs.
-
+  NOTE: CPod is unmaintained and may contain bugs and security vulnerabilities. Please use alternatives.
+  
   **Authors**
 
   This snap package is maintained by the Snapcrafters community. It is not necessarily endorsed or officially maintained by the developers of the application itself.  

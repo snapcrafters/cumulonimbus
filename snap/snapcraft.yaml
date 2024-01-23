@@ -31,26 +31,8 @@ base: core22
 
 parts:
   cpod:
-    plugin: nil
-    override-build: |
-      set -xeu
-      craftctl default
-      # Get the latest releases json
-      echo "Get GitHub releases..."
-      wget --quiet https://api.github.com/repos/z-------------/CPod/releases -O releases.json
-      # Get the version from the tag_name and the download URL.
-      VERSION=$(jq . releases.json | grep tag_name | cut -d'"' -f4 | sed s'/v//' | head -n 1)
-      DEB_URL=$(grep browser_download releases.json | grep "${VERSION}" | grep deb | cut -d'"' -f4)
-      echo "Downloading ${DEB_URL}..."
-      wget --quiet "${DEB_URL}" -O cpod.deb
-      echo "Unpacking cpod.deb..."
-      dpkg -x cpod.deb ${CRAFT_PART_INSTALL}
-      rm cpod.deb releases.json
-      sed -i 's|Icon=cpod|Icon=${SNAP}/usr/share/icons/hicolor/512x512/apps/cpod.png|' $CRAFT_PART_INSTALL/usr/share/applications/cpod.desktop
-    build-packages:
-      - dpkg
-      - jq
-      - wget
+    plugin: dump
+    source: https://github.com/z-------------/CPod/releases/download/v${SNAPCRAFT_PROJECT_VERSION}/CPod_${SNAPCRAFT_PROJECT_VERSION}_amd64.deb
     stage-packages:
       - libnspr4
       - libnss3

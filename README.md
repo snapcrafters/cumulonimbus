@@ -8,6 +8,9 @@
 
 <p align="center"><i>"A simple, beautiful podcast app."</i></p>
 
+<p align="center"><b>NOTE: CPod is unmaintained and may contain bugs and security vulnerabilities.</b></p>
+<p align="center"><i>Please reference (https://github.com/z-------------/CPod/) for more info.</i>
+
 <p align="center">
 <a href="https://snapcraft.io/cumulonimbus"><img src="https://snapcraft.io/cumulonimbus/badge.svg" alt="Snap Status"></a>
 <a href="https://github.com/snapcrafters/cumulonimbus/actions/workflows/sync-version-with-upstream.yml"><img src="https://github.com/snapcrafters/cumulonimbus/actions/workflows/sync-version-with-upstream.yml/badge.svg"></a>

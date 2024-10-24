@@ -57,7 +57,7 @@ parts:
    
   libgconf:
     plugin: dump
-    source: http://ftp.it.debian.org/debian/pool/main/g/gconf/libgconf-2-4_3.2.6-8_amd64.deb 
+    source: https://ftp.debian.org/debian/pool/main/g/gconf/libgconf-2-4_3.2.6-8_amd64.deb 
      
 apps:
   cumulonimbus:

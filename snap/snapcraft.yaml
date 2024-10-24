@@ -25,20 +25,22 @@ version: '1.28.2'
 
 grade: stable
 confinement: strict
-architectures:
-  - build-on: amd64
-base: core22
+base: core24
+platforms:
+  amd64:
+    build-on: [amd64]
+    build-for: [amd64]
 
 parts:
   cpod:
     plugin: dump
     source: https://github.com/z-------------/CPod/releases/download/v${SNAPCRAFT_PROJECT_VERSION}/CPod_${SNAPCRAFT_PROJECT_VERSION}_amd64.deb
+    
     stage-packages:
       - libnspr4
       - libnss3
       - libxss1
       - libxtst6
-      - libgconf-2-4
 
   cleanup:
     after: [cpod]
@@ -52,7 +54,11 @@ parts:
         rm -rf $CRAFT_PRIME/usr/share/$CRUFT
       done
       find $CRAFT_PRIME/usr/share/doc/ -type f -not -name 'copyright' -delete
-
+   
+  libgconf:
+    plugin: dump
+    source: http://ftp.it.debian.org/debian/pool/main/g/gconf/libgconf-2-4_3.2.6-8_amd64.deb 
+     
 apps:
   cumulonimbus:
     extensions: [gnome]

@@ -24,6 +24,11 @@ jobs:
           update-script: |
             # Update the snapcraft.yaml to match upstream version
             API="https://api.github.com/repos/z-------------/CPod/releases/latest"
-            VERSION=$(curl -s "${API}" | jq -r .tag_name | sed 's/v//g')
+            TAG=$(curl --fail --silent --show-error --location "${API}" | jq --exit-status --raw-output '.tag_name | select(type == "string" and length > 0)')
+            VERSION="${TAG#v}"
+            if [[ ! "${VERSION}" =~ ^[0-9]+([.][0-9]+)+([+-][0-9A-Za-z.-]+)?$ ]]; then
+              echo "Invalid upstream version: ${VERSION}" >&2
+              exit 1
+            fi
             sed -i 's/^\(version: \).*$/\1'"'$VERSION'"'/' snap/snapcraft.yaml 
 
